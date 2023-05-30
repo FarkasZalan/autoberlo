@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="hu" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Autó bérlése</title>
+    <link rel="stylesheet" type="text/css" href="../static/alert.css"/>
+    <link rel="stylesheet" type="text/css" href="../static/listazas.css"/>
+    <link rel="stylesheet" type="text/css" href="menubar.css"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+          crossorigin="anonymous"/>
+</head>
+<style>
+    @import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;1,600&display=swap");
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #343a40;
+  color:white;
+}
+
+.container {
+    margint-top:20%;
+    max-width: 1500px;
+    width: 100%;
+    background: #343a40;
+    padding: 25px 30px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.cim {
+border-top: none;
+    vertical-align: middle !Important;
+        font-size: 27px;
+    margin: 20px;
+
+}
+
+.fo_cim {
+border-top: none;
+    vertical-align: middle !Important;
+        font-size: 27px;
+    margin: 20px;
+    text-align: center;
+}
+
+.user-details .input-box input {
+
+    height: 35px;
+    margin: 20px;
+    width: 30%;
+    outline: none;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    padding-left: 15px;
+    font-size: 16px;
+    border-bottom-width: 2px;
+    transition: all 0.3s ease;
+}
+img {
+    max-width: 300px;
+    border-radius: 20px;
+        display: block;
+  margin-left: 15%;
+
+}
+div {
+    text-align: -webkit-center;
+  }
+
+  .berelgomb{
+vertical-align: middle !important;
+padding-left: 15px;
+    padding-right: 15px;
+    height: 45px;
+    outline: none;
+    color: #fff;
+    border: 1px solid #ed4e53;
+    font-size: 18px;
+    font-weight: 500;
+    border-radius: 20px;
+    letter-spacing: 1px;
+    background: #ed4e53;
+    cursor: pointer;
+}
+
+.berelgomb:hover{
+outline: none;
+    color: #ed4e53;
+    border: 1px solid #ed4e53;
+    background: #fff;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+
+.topnav a {
+  float: left !important;
+  color: #f2f2f2 !important;
+  text-align: center !important;
+  padding: 14px 16px !important;
+  text-decoration: none !important;
+  font-size: 17px !important;
+}
+
+.topnav a:hover {
+  background-color: #ddd !important;
+  color: black !important;
+}
+
+.topnav a.active {
+  background-color: #ed4e53 !important;
+  color: white !important;
+}
+
+
+</style>
+<body>
+<div class="topnav">
+    <a href="/">Kezdőlap</a>
+    <a href="/admin">Admin</a>
+</div>
+<div th:if="${Uzenet}" class="alert alert-info" role="alert" th:text="${Uzenet}"></div>
+
+<div class="container">
+    <h2 class="fo_cim">Autó kikölcsönzése</h2>
+    <br>
+    <form th:action="@{/attekinteshez}" action="#" method="post">
+        <div class="user-details">
+            <h2 class="cim">Autó részletei:</h2>
+            <div class="input-box">
+                <label for="auto_marka">Autó neve: </label>
+                <input type="text" name="auto_marka" id="auto_marka" readonly th:each="auto : ${auto}"
+                       th:value="${auto.marka} + ' ' + ${auto.auto_nev}">
+            </div>
+
+            <input type="hidden" name="auto_id" readonly th:each="auto : ${auto}" th:value="${auto.auto_id}">
+
+            <div class="input-box">
+                <label for="tipus">Autó típusa: </label>
+                <input type="text" name="tipus" id="tipus" readonly th:each="auto : ${auto}"
+                       th:value="${auto.tipus}">
+            </div>
+
+            <div class="input-box">
+                <label for="motor_kobcenti">Motor mérete: </label>
+                <input type="text" name="motor_kobcenti" id="motor_kobcenti" readonly th:each="auto : ${auto}"
+                       th:value="${auto.motor_kobcenti} + ' cm3'">
+            </div>
+
+            <div class="input-box">
+                <label for="evjarat">Évjárat: </label>
+                <input type="text" name="evjarat" id="evjarat" readonly th:each="auto : ${auto}"
+                       th:value="${auto.evjarat}">
+            </div>
+
+            <div class="input-box">
+                <label for="ulesek_szama">Ülések száma: </label>
+                <input type="text" name="ulesek_szama" id="ulesek_szama" readonly th:each="auto : ${auto}"
+                       th:value="${auto.ulesek_szama}">
+            </div>
+
+            <div class="input-box">
+                <label for="berles_dija">Bérlés díja: </label>
+                <input type="text" name="berles_dija" id="berles_dija" readonly th:each="auto : ${auto}"
+                       th:value="${auto.berles_dija} + ' Ft/nap'">
+            </div>
+            <br>
+            <div>
+                <table>
+                    <tbody>
+                    <tr th:each="auto : ${auto}">
+                        <td th:if="${auto.kep != ''}"><img alt="auto kepe"
+                                                           th:src="*{'data:image/jpeg;base64,'+{auto.kep}}"/></td>
+                        <td th:if="${auto.kep == ''}"><img alt="auto kepe" th:src="@{/default_img/auto.jpg}"/></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <br><br>
+            <h2 class="cim">Saját adatok megadása:</h2>
+            <br>
+            <div class="input-box">
+                <label for="nev">Teljes név: </label>
+                <input type="text" name="nev" id="nev" required>
+            </div>
+
+            <div class="input-box">
+                <label for="email">Email cím: </label>
+                <input type="email" name="email" id="email" required>
+            </div>
+
+            <div class="input-box">
+                <label for="lakcim">Lakcím: </label>
+                <input type="text" name="lakcim" id="lakcim" required>
+            </div>
+
+            <div class="input-box">
+                <label for="telefonszam">Telefonszám: </label>
+                <input type="tel" name="telefonszam" id="telefonszam" required>
+            </div>
+
+            <div class="input-box">
+                <label for="kezdo_datum">Mettől: </label>
+                <input type="date" name="kezdo_datum" id="kezdo_datum" required>
+            </div>
+
+            <div class="input-box">
+                <label for="vegzo_datum">Meddig: </label>
+                <input type="date" name="vegzo_datum" id="vegzo_datum" required>
+            </div>
+            <br><br>
+            <input type="submit" value="Tovább" class="berelgomb">
+        </div>
+    </form><br>
+
+    <form th:action="@{/}" action="/">
+        <input type="submit" value="Vissza" class="berelgomb">
+    </form>
+</div>
+
+</body>
+</html>

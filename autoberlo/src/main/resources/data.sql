@@ -1,0 +1,17 @@
+INSERT  into auto (auto_id, auto_rendszam, auto_nev, marka, tipus, motor_kobcenti, evjarat, ulesek_szama, berles_dija, kep, innaktiv) VALUES (1, 'NRY - 375', 'Bertone Cabrio','Opel', 'Benzin', 1800, 2002, 4, 13000, '', "elerheto")
+ON DUPLICATE KEY UPDATE auto_id = VALUES (auto_id), auto_rendszam = VALUES (auto_rendszam), auto_nev = VALUES (auto_nev), marka = VALUES (marka),tipus = VALUES (tipus), motor_kobcenti = VALUES(motor_kobcenti), berles_dija = VALUES(berles_dija), evjarat = VALUES(evjarat), ulesek_szama = VALUES(ulesek_szama), kep = VALUES(kep), innaktiv = VALUES(innaktiv);
+
+INSERT  into auto (auto_id, auto_rendszam, auto_nev, marka, tipus, motor_kobcenti, evjarat, ulesek_szama, berles_dija, kep, innaktiv) VALUES (2, 'FTP - 415', 'RS Octavia','Skoda', 'Dízel', 2500, 2015, 5, 12000, '', "elerheto")
+ON DUPLICATE KEY UPDATE auto_id = VALUES (auto_id), auto_rendszam = VALUES (auto_rendszam), auto_nev = VALUES (auto_nev), marka = VALUES (marka),tipus = VALUES (tipus), motor_kobcenti = VALUES(motor_kobcenti), berles_dija = VALUES(berles_dija), evjarat = VALUES(evjarat), ulesek_szama = VALUES(ulesek_szama), kep = VALUES(kep), innaktiv = VALUES(innaktiv);
+
+INSERT  into auto (auto_id, auto_rendszam, auto_nev, marka, tipus, motor_kobcenti, evjarat, ulesek_szama, berles_dija, kep, innaktiv) VALUES (3, 'SMR - 231', 'Fabia','Skoda', 'Dízel', 1200, 2003, 5, 7500, '', "elerheto")
+ON DUPLICATE KEY UPDATE auto_id = VALUES (auto_id), auto_rendszam = VALUES (auto_rendszam), auto_nev = VALUES (auto_nev), marka = VALUES (marka),tipus = VALUES (tipus), motor_kobcenti = VALUES(motor_kobcenti), berles_dija = VALUES(berles_dija), evjarat = VALUES(evjarat), ulesek_szama = VALUES(ulesek_szama), kep = VALUES(kep), innaktiv = VALUES(innaktiv);
+
+INSERT  into auto (auto_id, auto_rendszam, auto_nev, marka, tipus, motor_kobcenti, evjarat, ulesek_szama, berles_dija, kep, innaktiv) VALUES (4, 'FRT - 146', 'A6','Audi', 'Dízel', 3200, 2019, 5, 27000, '', "elerheto")
+ON DUPLICATE KEY UPDATE auto_id = VALUES (auto_id), auto_rendszam = VALUES (auto_rendszam), auto_nev = VALUES (auto_nev), marka = VALUES (marka),tipus = VALUES (tipus), motor_kobcenti = VALUES(motor_kobcenti), berles_dija = VALUES(berles_dija), evjarat = VALUES(evjarat), ulesek_szama = VALUES(ulesek_szama), kep = VALUES(kep), innaktiv = VALUES(innaktiv);
+
+INSERT  into auto (auto_id, auto_rendszam, auto_nev, marka, tipus, motor_kobcenti, evjarat, ulesek_szama, berles_dija, kep, innaktiv) VALUES (5, 'RSS - 567', 'Transit','Ford', 'Dízel', 1900, 2019, 2, 18000, '', "elerheto")
+ON DUPLICATE KEY UPDATE auto_id = VALUES (auto_id), auto_rendszam = VALUES (auto_rendszam), auto_nev = VALUES (auto_nev), marka = VALUES (marka),tipus = VALUES (tipus), motor_kobcenti = VALUES(motor_kobcenti), berles_dija = VALUES(berles_dija), evjarat = VALUES(evjarat), ulesek_szama = VALUES(ulesek_szama), kep = VALUES(kep), innaktiv = VALUES(innaktiv);
+
+INSERT  into auto (auto_id, auto_rendszam, auto_nev, marka, tipus, motor_kobcenti, evjarat, ulesek_szama, berles_dija, kep, innaktiv) VALUES (6, 'QWE - 725', 'Kangoo','Renault', 'Dízel', 1900, 2012, 2, 9000, '', "elerheto")
+ON DUPLICATE KEY UPDATE auto_id = VALUES (auto_id), auto_rendszam = VALUES (auto_rendszam), auto_nev = VALUES (auto_nev), marka = VALUES (marka),tipus = VALUES (tipus), motor_kobcenti = VALUES(motor_kobcenti), berles_dija = VALUES(berles_dija), evjarat = VALUES(evjarat), ulesek_szama = VALUES(ulesek_szama), kep = VALUES(kep), innaktiv = VALUES(innaktiv);

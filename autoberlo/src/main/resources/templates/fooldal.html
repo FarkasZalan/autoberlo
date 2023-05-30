@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="hu" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Autóbérlés</title>
+
+    <link rel="stylesheet" type="text/css" href="alert.css"/>
+    <link rel="stylesheet" type="text/css" href="listazas.css"/>
+    <link rel="stylesheet" type="text/css" href="menubar.css"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+          crossorigin="anonymous"/>
+</head>
+<style>
+    @import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;1,600&display=swap");
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #343a40;
+  color:white;
+}
+
+.kereses {
+    padding: 25px 30px;
+    border-radius: 5px;
+    margin-left:30px;
+}
+
+.cim {
+border-top: none;
+    vertical-align: middle !Important;
+        font-size: 27px;
+    margin: 20px;
+    text-align: center;
+}
+
+
+
+</style>
+<body>
+<div class="topnav">
+    <a class="active" href="/">Kezdőlap</a>
+    <a href="/admin">Admin</a>
+</div>
+<div th:if="${Uzenet}" class="alert alert-info" role="alert" th:text="${Uzenet}"></div>
+<form class="kereses" action="#" th:action="@{/szures}" method="Post" accept-charset="utf-8">
+    <h2>Szabad autók szűrése</h2><br>
+    <label for="date1">Bérlés kezdete</label><br>
+    <input type="date" id="date1" name="szuresKezdoDatum"><br><br>
+    <label for="date2">Bérlés vége</label><br>
+    <input type="date" id="date2" name="szuresVegzoDatum"><br><br>
+    <input type="submit" value="Keresés" class="berelgomb">
+</form>
+<div class="container">
+
+    <table class="table table-dark kiemelt_vegosszeg">
+        <td class="cim">Autók listája</td>
+        <br>
+        <tr>
+            <td>
+                <table class="table table-dark" id="autoTable">
+                    <tr>
+                        <td></td>
+                        <td>Márka</td>
+                        <td>Név</td>
+                        <td>Típus</td>
+                        <td>Motor</td>
+                        <td>Évjárat</td>
+                        <td>Ülések száma</td>
+                        <td>Bérlés ár/nap</td>
+                        <td></td>
+                    </tr>
+
+                    <tbody>
+                    <tr th:each=" auto : ${autok}">
+                        <form th:action="|auto/${auto.auto_id}|" action="#" method="post">
+
+                            <td th:if="${auto.kep != ''}"><img alt="" th:src="*{'data:image/jpeg;base64,'+{auto.kep}}"/>
+                            </td>
+                            <td th:if="${auto.kep == ''}"><img alt="" src="default_img/auto.jpg"/></td>
+                            <td th:text="${auto.marka}"></td>
+                            <td th:text="${auto.auto_nev}"></td>
+                            <td th:text="${auto.tipus}">benzin</td>
+                            <td th:text="${auto.motor_kobcenti} + ' cm3'"></td>
+                            <td th:text="${auto.evjarat}"></td>
+                            <td th:text="${auto.ulesek_szama}"></td>
+                            <td th:text="${auto.berles_dija} + ' Ft'"><span> Ft/nap</span></td>
+                            <td><input type="submit" alt="berel" value="Bérlés"
+                                       class="berelgomb"></td>
+                        </form>
+                    </tr>
+                    </tbody>
+
+                </table>
+            </td>
+        </tr>
+    </table>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="hu"  xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Autó hozzáadása</title>
+
+    <link rel="stylesheet" type="text/css" href="alert.css"/>
+    <link rel="stylesheet" type="text/css" href="listazas.css"/>
+    <link rel="stylesheet" type="text/css" href="menubar.css"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+          crossorigin="anonymous"/>
+</head>
+<style>
+    @import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;1,600&display=swap");
+    @import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;1,600&display=swap");
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #343a40;
+  color:white;
+}
+
+.container {
+    margint-top:20%;
+    max-width: 1500px;
+    width: 100%;
+    background: #343a40;
+    padding: 25px 30px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.cim {
+border-top: none;
+    vertical-align: middle !Important;
+        font-size: 27px;
+    margin: 20px;
+
+}
+
+.fo_cim {
+border-top: none;
+    vertical-align: middle !Important;
+        font-size: 27px;
+    margin: 20px;
+    text-align: center;
+}
+
+.user-details .input-box input {
+
+    height: 35px;
+    margin: 20px;
+    width: 30%;
+    outline: none;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    padding-left: 15px;
+    font-size: 16px;
+    border-bottom-width: 2px;
+    transition: all 0.3s ease;
+}
+img {
+    max-width: 300px;
+    border-radius: 20px;
+        display: block;
+
+}
+div {
+    text-align: -webkit-center;
+  }
+
+  .berelgomb{
+vertical-align: middle !important;
+padding-left: 15px;
+    padding-right: 15px;
+    height: 45px;
+    outline: none;
+    color: #fff;
+    border: 1px solid #ed4e53;
+    font-size: 18px;
+    font-weight: 500;
+    border-radius: 20px;
+    letter-spacing: 1px;
+    background: #ed4e53;
+    cursor: pointer;
+}
+
+.berelgomb:hover{
+outline: none;
+    color: #ed4e53;
+    border: 1px solid #ed4e53;
+    background: #fff;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+
+.topnav a {
+  float: left !important;
+  color: #f2f2f2 !important;
+  text-align: center !important;
+  padding: 14px 16px !important;
+  text-decoration: none !important;
+  font-size: 17px !important;
+}
+
+.topnav a:hover {
+  background-color: #ddd !important;
+  color: black !important;
+}
+
+.topnav a.active {
+  background-color: #ed4e53 !important;
+  color: white !important;
+}
+.vissza {
+text-align: center !important;
+}
+
+
+
+
+</style>
+<body>
+<div class="topnav">
+    <a href="/">Kezdőlap</a>
+    <a href="/foglalasok">Foglalások</a>
+    <a class="active" href="/autok">Autó hozzáadása</a>
+</div>
+<div th:if="${Uzenet}" class="alert alert-info" role="alert" th:text="${Uzenet}"></div>
+
+<form th:action="@{/auto_hozzaadasa}" action="#" method="post" enctype="multipart/form-data">
+    <div class="user-details">
+        <h2 class="cim">Autó hozzáadása</h2>
+        <div class="input-box">
+            <label for="rendszam">Autó rendszáma: </label>
+            <input type="text" name="rendszam" id="rendszam" required>
+        </div>
+
+        <div class="input-box">
+            <label for="auto_marka">Autó márkája: </label>
+            <input type="text" name="auto_marka" id="auto_marka" required>
+        </div>
+
+        <div class="input-box">
+            <label for="auto_nev">Autó neve: </label>
+            <input type="text" name="auto_nev" id="auto_nev" required>
+        </div>
+
+        <div class="input-box">
+            <label for="tipus">Autó típusa: </label>
+            <input type="text" name="tipus" id="tipus" required>
+        </div>
+
+        <div class="input-box">
+            <label for="motor_kobcenti">Motor mérete (cm3): </label>
+            <input type="number" name="motor_kobcenti" id="motor_kobcenti" required>
+        </div>
+
+        <div class="input-box">
+            <label for="evjarat">Évjárat: </label>
+            <input type="number" name="evjarat" id="evjarat" required>
+        </div>
+
+        <div class="input-box">
+            <label for="ulesek_szama">Ülések száma: </label>
+            <input type="number" name="ulesek_szama" id="ulesek_szama" required>
+        </div>
+
+        <div class="input-box">
+            <label for="berles_dija">Bérlés díja (Ft/nap): </label>
+            <input type="number" name="berles_dija" id="berles_dija" required>
+        </div>
+        <br>
+        <div>
+            <table>
+                <tbody>
+                <tr>
+                    <td><img alt="auto kepe" th:src="@{/default_img/auto.jpg}"/></td>
+                </tr>
+                </tbody>
+            </table>
+        </div><br>
+        <label for="kep">Kép hozzáadása</label><br>
+        <input  type="file" id="kep" name="kep" accept="image/*"><br><br>
+        <br><br>
+        <input type="submit" value="Hozzáad" class="berelgomb">
+    </div>
+</form>
+<br>
+<div class="container">
+    <form method="post" action="/autok" class="vissza">
+        <input type="submit" value="Vissza" class="berelgomb">
+    </form>
+</div>
+
+</body>
+</html>
