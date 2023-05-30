@@ -1,6 +1,4 @@
-# Autóbérlő
-
-## Az alkalmazásról
+# Az alkalmazásról
 
 ### Sima felhasználó
 Az alkalmazásban meg van valósítva a főoldalon való szűrés időintervallum szerint a szabad autókra.
